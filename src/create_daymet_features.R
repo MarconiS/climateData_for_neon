@@ -1,5 +1,6 @@
 create_daymet_features <- function(path_dat = "./TOS_data/field_data.csv", 
-                                   path_clim  = "./Environmental_features/Daymet_TOS.RData"){
+                                   path_clim  = "./Environmental_features/Daymet_TOS.RData", 
+                                   path_out = "./pullData/TOS_data/field_data_with_climate.csv"){
   library(readr)
   library(daymetr)
   library(tidyverse)
@@ -29,5 +30,8 @@ create_daymet_features <- function(path_dat = "./TOS_data/field_data.csv",
       dataset = rbind(dataset, point_features)
     }
   }
-  write_csv(dataset, "./TOS_data/field_data_with_climate.csv")
+  write_csv(dataset, path_out)
 }
+create_daymet_features(path_dat = "./pullData/TOS_data/utm_dataset.csv", 
+                       path_clim  = "./pullData/Environmental_features/Daymet_traits.RData", 
+                       path_out = "./pullData/TOS_data/trait_data_with_climate.csv")
