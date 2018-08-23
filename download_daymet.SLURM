@@ -2,7 +2,7 @@
 #SBATCH --job-name=get_sites_daymet    # Job name
 #SBATCH --mail-type=END               # Mail events (NONE, BEGIN, END, FAIL, AL$
 #SBATCH --mail-user=sergio.marconi@weecology.org   # Where to send mail
-#SBATCH --account=white
+#SBATCH --account=ewhite
 #SBATCH --qos=ewhite
 
 #SBATCH --ntasks=1                 # Number of MPI ranks
