@@ -10,7 +10,7 @@
 #SBATCH --mem=2000
 #SBATCH --time=95:59:00       #Time limit hrs:min:sec
 #SBATCH --output=get_site_daymet.out   # Standard output and error log
-#SBATCH --error= get_sites_daymet.err
+#SBATCH --error=get_sites_daymet.err
 
 
 pwd; hostname; date
