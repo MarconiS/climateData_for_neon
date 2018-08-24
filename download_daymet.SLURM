@@ -16,7 +16,6 @@
 pwd; hostname; date
 ml R/3.4.3
 echo "starting downloading data from day met"
-echo $1
 
 Rscript --default-packages=stats,utils,datasets,base,graphics,grDevices,methods /ufrc/ewhite/s.marconi/climateData_for_neon/src/daymet_per_site.R
 echo "done"
