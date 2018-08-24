@@ -44,7 +44,7 @@ path_daymet = "//orange/ewhite/NeonData/Daymet/SiteData/"
 field_dat = "//orange/ewhite/s.marconi/final_dataset_crop.csv"
 list_files <- list.files(path_daymet)
 library(parallel)
-no_cores <- detectCores() - 2
+no_cores <- 63
 cl <- makeCluster(no_cores)
 
 parLapply(cl, list_files, get_values_from_netcdf, path_daymet, field_dat)
