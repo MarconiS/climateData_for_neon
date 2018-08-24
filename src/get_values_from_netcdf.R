@@ -23,7 +23,6 @@ get_values_from_netcdf <- function(clim_dat = NULL, path_daymet = "/Volumes/rast
     one_year_tile <- crop(one_year_tile, extent(data_to_extract_from)) 
     ext <- raster::extract(one_year_tile,data_to_extract_from)
     out <- list()
-    out[[mth]] <- tmp
     for(mth in 1:12){
       tmp <- ext[,month_vect == mth]
       if(meta_daym[1] %in% c("dayl", "srad", "swe", "tmax", "tmin", "vp")){
