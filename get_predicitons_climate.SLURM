@@ -3,11 +3,11 @@
 #SBATCH --mail-type=END               # Mail events (NONE, BEGIN, END, FAIL, AL$
 #SBATCH --mail-user=sergio.marconi@weecology.org   # Where to send mail
 #SBATCH --account=ewhite
-#SBATCH --qos=ewhite-q
+#SBATCH --qos=ewhite-b
 
 #SBATCH --ntasks=1                 # Number of MPI ranks
 #SBATCH --cpus-per-task=64            # Number of cores per MPI rank
-#SBATCH --mem=250000
+#SBATCH --mem=320000
 #SBATCH --time=95:59:00       #Time limit hrs:min:sec
 #SBATCH --output=climate_to_predictions.out   # Standard output and error log
 #SBATCH --error=climate_to_predictions.err
