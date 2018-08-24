@@ -36,7 +36,7 @@ get_values_from_netcdf <- function(clim_dat = NULL, path_daymet = "/Volumes/rast
 
 
 path_daymet = "//orange/ewhite/NeonData/Daymet/SiteData/"
-field_dat = "~/Documents/GitHub/shineOnNEON/data/predictions.csv"
+field_dat = "//orange/ewhite/s.marconi/final_dataset_crop.csv"
 list_files <- list.files(path_daymet)
 library(parallel)
 no_cores <- detectCores() - 2
