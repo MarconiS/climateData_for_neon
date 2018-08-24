@@ -35,15 +35,15 @@ get_values_from_netcdf <- function(clim_dat = NULL, path_daymet = "/Volumes/rast
 }
 
 
-
+path_daymet = "//orange/ewhite/NeonData/Daymet/SiteData/"
+field_dat = "~/Documents/GitHub/shineOnNEON/data/predictions.csv"
 list_files <- list.files(path_daymet)
 library(parallel)
 no_cores <- detectCores() - 2
 cl <- makeCluster(no_cores)
 
-parLapply(cl, list_files, get_values_from_netcdf, 
-          path_daymet = "/Volumes/rasters2017/CrossScale_macrosystems/Daymet_OSBS/",
-          field_dat = "~/Documents/GitHub/shineOnNEON/data/predictions.csv")
+parLapply(cl, list_files, get_values_from_netcdf, path_daymet, field_dat)
+          
 
 stopCluster(cl)
 
