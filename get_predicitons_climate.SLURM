@@ -6,7 +6,7 @@
 #SBATCH --qos=ewhite-b
 
 #SBATCH --ntasks=1                 # Number of MPI ranks
-#SBATCH --cpus-per-task=64            # Number of cores per MPI rank
+#SBATCH --cpus-per-task=16            # Number of cores per MPI rank
 #SBATCH --mem=250000
 #SBATCH --time=95:59:00       #Time limit hrs:min:sec
 #SBATCH --output=climate_to_predictions.out   # Standard output and error log
