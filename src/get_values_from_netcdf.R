@@ -35,7 +35,7 @@ get_values_from_netcdf <- function(clim_dat = NULL, path_daymet = "/Volumes/rast
     out <- data.frame(out)
     out[["unique_id"]] <- data_to_extract_from@data$unique_id
     
-    write_csv(out, paste("./outs/predictions_",meta_daym[1],"_",meta_daym[2], ".csv", sep="" ))
+    write_csv(out, paste("./outs/predictions_",meta_daym[1],"_",meta_daym[2], '_', gsub('.{3}$', '', meta_daym[3]), ".csv", sep="" ))
   }
 }
 
