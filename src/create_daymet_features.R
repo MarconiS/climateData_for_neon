@@ -1,6 +1,6 @@
-create_daymet_features <- function(path_dat = "./TOS_data/field_data.csv", 
-                                   path_clim  = "./Environmental_features/Daymet_TOS.RData", 
-                                   path_out = "./pullData/TOS_data/field_data_with_climate.csv"){
+create_daymet_features <- function(path_dat = "./TOS_data/predictions_data_with_climate.csv", 
+                                   path_clim  = "./Environmental_features/Daymet_traits_preds.RData", 
+                                   path_out = "./TOS_data/pred_data_with_climate.csv"){
   library(readr)
   library(daymetr)
   library(tidyverse)

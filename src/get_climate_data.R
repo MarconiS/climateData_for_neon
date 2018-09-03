@@ -22,21 +22,21 @@ get_lat_long <- function(field_data){
   return(new_dat)
 }
 
-download_point_daymet <- function(dat_path = "./TOS_data/utm_dataset.csv", outpath = "./Environmental_features")
+download_point_daymet <- function(dat_path = "./predictions/average_pred_per_km2.csv", outpath = "./Environmental_features"){
   field_data <- readr::read_csv(dat_path) %>%
-  dplyr::select(individualID, siteID.x, taxonID.x, UTM_E,UTM_N)
-colnames(field_data) <- c("individualID", "siteID", "taxonID", "UTM_E","UTM_N")
-new_dat <- get_lat_long(field_data)
-
-daymet_coords <- cbind(new_dat$individualID,new_dat$UTM_N, new_dat$UTM_E)
-readr::write_csv(data.frame(daymet_coords), './tmp/my_sites.csv')
-library(daymetr)
-
-df <- download_daymet_batch(file_location = './tmp/my_sites.csv',
-                            start = 1980,
-                            end = 2017,
-                            internal = TRUE)
-
-save(df, file= paste(outpath, "Daymet_traits.RData", sep="/"))
-
-
+     dplyr::select(tile, site, domain, UTM_X,UTM_Y)
+  colnames(field_data) <- c("individualID", "siteID", "taxonID", "UTM_E","UTM_N")
+  new_dat <- get_lat_long(field_data)
+  
+  daymet_coords <- cbind(new_dat$individualID,new_dat$UTM_N, new_dat$UTM_E)
+  readr::write_csv(data.frame(daymet_coords), './tmp/my_sites.csv')
+  library(daymetr)
+  
+  df <- download_daymet_batch(file_location = './tmp/my_sites.csv',
+                              start = 1980,
+                              end = 2017,
+                              internal = TRUE)
+  
+  save(df, file= paste(outpath, "Daymet_traits_preds.RData", sep="/"))
+  
+}
