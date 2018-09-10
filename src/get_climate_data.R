@@ -4,7 +4,7 @@ get_epsg_from_utm <- function(site){
   return(dictionary[colnames(dictionary)==site])
 }
 
-get_lat_long <- function(field_data){
+get_lat_long <- function(field_data, epsg = 32617){
   library(daymetr)
   library(rgdal)
   new_dat <- NULL
@@ -22,14 +22,19 @@ get_lat_long <- function(field_data){
   return(new_dat)
 }
 
-download_point_daymet <- function(dat_path = "./predictions/average_pred_per_km2.csv", outpath = "./Environmental_features"){
+download_point_daymet <- function(listSites = "OSBS", dat_path = "./predictions/average_pred_per_km2.csv", 
+                                  outpath = "./Environmental_features"){
+  require(tidyverse)
   field_data <- readr::read_csv(dat_path) %>%
-     dplyr::select(tile, site, domain, UTM_X,UTM_Y)
-  colnames(field_data) <- c("individualID", "siteID", "taxonID", "UTM_E","UTM_N")
+     dplyr::select(individualID, taxonID, siteID, domainID, stemDiameter, height, maxCrownDiameter, UTM_E,UTM_N)
+  colnames(field_data) <- c("individualID", "taxonID", "siteID", "domainID","stemDiameter", 
+                            "height", "maxCrownDiameter", "UTM_E","UTM_N")
+  
+  field_data <- field_data[field_data$siteID %in% listSites, ]
   new_dat <- get_lat_long(field_data)
   
   daymet_coords <- cbind(new_dat$individualID,new_dat$UTM_N, new_dat$UTM_E)
-  readr::write_csv(data.frame(daymet_coords), './tmp/my_sites.csv')
+  readr::write_csv(data.frame(daymet_coords), './tmp/my_sites.csv', col_names=F)
   library(daymetr)
   
   df <- download_daymet_batch(file_location = './tmp/my_sites.csv',
