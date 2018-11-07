@@ -37,10 +37,11 @@ download_point_daymet <- function(listSites = "OSBS", dat_path = "./predictions/
   readr::write_csv(data.frame(daymet_coords), './tmp/my_sites.csv', col_names=F)
   library(daymetr)
   
-  df <- download_daymet_batch(file_location = './tmp/my_sites.csv',
+  download_daymet_batch(file_location = './tmp/my_sites.csv',
                               start = 1980,
                               end = 2017,
-                              internal = TRUE)
+                              internal = F,
+                              path = pt_out)
   
   save(df, file= paste(outpath, "Daymet_traits_preds.RData", sep="/"))
   
