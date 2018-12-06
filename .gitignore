@@ -4,3 +4,5 @@
 .Ruserdata
 *.Rproj
 *.csv
+.DS_Store
+*.RData
